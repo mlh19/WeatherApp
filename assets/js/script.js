@@ -22,3 +22,57 @@
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
     // need a local storage to store searched cities. Grab stuff from local storage and display in page. 
+
+
+var myAPI = "8ce43231e9bfeecbefc30eede9ec8820";
+var fiveDay;
+var cityName = "austin";
+var part = "minutely, hourly";
+
+var oneCall;
+
+
+function getCoords() {
+    fiveDay = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${myAPI}`;
+
+
+
+    fetch(fiveDay)
+        .then(function(response) {
+            if (response.ok) {
+                response.json().then(function(data) {
+                })
+            }
+        })
+    }
+
+getCoords();
+        
+
+    function getOneDay(latitude, longitude) {
+        oneCall = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=${part}&appid=${myAPI}`;
+        fethch(oneCall)
+            .then(function(response) {
+                if (response.ok) {
+                    response.json().then(function(data) {
+    
+                        latitude = data.cityName.getCoords.lat;
+                        longitude = data.cityName.getCoords.lon;
+
+                        getOneCall(latitude, longitude);
+                    })
+
+                }
+
+            })
+        }
+
+
+
+
+
+
+
+function oneDay() {
+    // oneDay = `https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={myAPI}`
+}
