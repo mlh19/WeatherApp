@@ -40,9 +40,25 @@ function getCoords() {
     fetch(fiveDay)
         .then(function(response) {
             if (response.ok) {
-                response.json().then(function(data) {
+                response.json()
+                .then(function(data) {
+                    console.log(data);
+                    var latitude = data.city.coord.lat;
+                    
+                       var longitude = data.city.coord.lon;
+                       console.log("latitude " + latitude);
+                       console.log("longitude " + longitude);
+                       getOneDay(latitude, longitude);
+
+    clearDiv("temp1");
+    clearDiv("temp2");
+    clearDiv("temp3");
+    clearDiv("temp4");
+    clearDiv("temp5");
+
                 })
             }
+            
         })
     }
 
@@ -50,16 +66,37 @@ getCoords();
         
 
     function getOneDay(latitude, longitude) {
-        oneCall = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=${part}&appid=${myAPI}`;
-        fethch(oneCall)
-            .then(function(response) {
-                if (response.ok) {
-                    response.json().then(function(data) {
-    
-                        latitude = data.cityName.getCoords.lat;
-                        longitude = data.cityName.getCoords.lon;
+        oneCall = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&exclude=${part}&appid=${myAPI}`;
 
-                        getOneCall(latitude, longitude);
+        //Fetch the API URL.
+        fetch(oneCall)
+            //Then run the fn with response.
+            .then(function(response) {
+                
+                if (response.ok) {
+                    console.log(response);
+                    //Convert response to JSON
+                    response.json()
+                    .then(function(data) {
+                        console.log(data);
+                         
+                        var todaysDate = (moment.unix(data.daily[0].dt).format("MM/DD/YYYY"));
+                         console.log(todaysDate);
+                         var currentCity = cityName;
+                         console.log(currentCity);
+                         var currentWind = data.current.wind_speed;
+                         console.log(currentWind);
+                         var currentUVI = data.current.uvi;
+                         console.log(currentUVI);
+                         var currentTemp = data.current.temp;
+                         console.log(currentTemp);
+                         var currentHumidity = data.current.humidity;
+                         console.log(currentHumidity);
+                         var icon = data.current.weather[0].icon;
+                         console.log(icon);
+                         var currentIcon = "http://openweathermap.org/img/wn/" + icon + ".png";
+                         console.log(currentIcon);
+                         day2(latitude, longitude);          
                     })
 
                 }
@@ -67,12 +104,60 @@ getCoords();
             })
         }
 
+        function day2(latitude, longitude) {
+            oneCall = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&exclude=${part}&appid=${myAPI}`;
+    
+            //Fetch the API URL.
+            fetch(oneCall)
+                //Then run the fn with response.
+                .then(function(response) {
+                    
+                    if (response.ok) {
+                        console.log(response);
+                        //Convert response to JSON
+                        response.json()
+                        .then(function(data) {
+                            console.log(data);
+                            for (let i = 1; i <= 5; i++){
+   
+                           
+                            var date2 = (moment.unix(data.daily[i].dt).format("MM/DD/YYYY"));
+                             console.log(date2);
+                             var wind2 = data.daily[i].wind_speed;
+                             console.log(wind2);
+                            
+                             var temp2 = data.daily[i].temp.max;
+                             console.log(temp2);
+                             var humidity2 = data.daily[i].humidity;
+                             console.log(humidity2);
+                             var icon2 = data.daily[i].weather[0].icon;
+                             console.log(icon2);
+                             var icon2a = "http://openweathermap.org/img/wn/" + icon2 + ".png";
+                             console.log(icon2a);
+                             var temperature = "temp" + [i];
+                             console.log(temperature);
+                             var day2_add = document.createElement('li');
+          
+            day2_add.textContent = date2;
+                           document.getElementById(temperature).appendChild(day2_add);
+              var addImg = document.createElement('img');
+              addImg.src = icon2a;
+              addImg.alt = "Weather Icon";
+              document.getElementById(temperature).appendChild(addImg);
+
+                            } 
+                            })
+
+                        }
+        
+                    })
+                }
 
 
-
-
-
-
-function oneDay() {
-    // oneDay = `https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={myAPI}`
-}
+                function clearDiv(elementID) {
+                    var ul = document.getElementById(elementID);
+                    while(ul.firstChild) {
+                        ul.removeChild(ul.firstChild);
+                    }
+                }
+                        
