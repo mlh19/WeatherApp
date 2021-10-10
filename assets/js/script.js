@@ -39,6 +39,7 @@ function getCoords(cityName) {
     fetch(fiveDayURL)
         .then(function (response) {
             if (response.ok) {
+                saveCity(cityName);
                 response.json()
                     .then(function (data) {
                         console.log(data);
@@ -85,18 +86,27 @@ function getDailyDays(latitude, longitude) {
                             console.log(iconURL);
 
                             if (i == 0) {
-                                // Add the first day on the top container.
+                                // TODO: Add the first day on the top container.
                             } else {
                                 // Add the other days as small containers.
-                                var temperature = "temp" + i;
-                                console.log(temperature);
-                                var dayListItemEl = document.createElement('li');
-                                dayListItemEl.textContent = date;
-                                document.getElementById(temperature).appendChild(dayListItemEl);
+                                var forecastUlID = "temp" + i;
+                                console.log(forecastUlID);
+
+                                var dateLabel = document.createElement('li');
+                                dateLabel.textContent = date;
+                                document.getElementById(forecastUlID).appendChild(dateLabel);
+
                                 var addImg = document.createElement('img');
                                 addImg.src = iconURL;
                                 addImg.alt = "Weather Icon";
-                                document.getElementById(temperature).appendChild(addImg);
+                                document.getElementById(forecastUlID).appendChild(addImg);
+
+                                // TODO: Temp
+
+                                // TODO: Wind
+
+                                // TODO: Humidity
+
                             }
                         }
                     })
@@ -112,6 +122,7 @@ function clearDiv(elementID) {
     }
 }
 
+// Search Button Section
 var searchButton = document.getElementById("searchButton");
 function searchButtonClicked() {
     // Gets the text inside the input box.
@@ -126,3 +137,36 @@ function searchButtonClicked() {
     }
 }
 searchButton.addEventListener("click", searchButtonClicked);
+
+// Local Storage Section
+function saveCity(cityName) {
+    // Implement the saving of the cityName using local storage.
+    localStorage.setItem("WeatherApp-" + cityName, cityName);
+    console.log("Saved city: " + cityName + ".");
+}
+
+function loadCities() {
+    // Get all the keys for local storage, and then ONLY get the ones that follow the filtering which
+    // is if the key contains "WeatherApp-".
+    var validKeys = Object.keys(localStorage).filter(word => word.includes("WeatherApp-") === true);
+    console.log(validKeys);
+
+    // The index to reference each key by.
+    var numOfKeys = validKeys.length;
+    var amountOfButtons = Math.min(numOfKeys, 8);
+
+    // Create a new element with each initial and their score.
+    for (var i = 0; i < amountOfButtons; i++) {
+        // TODO: Get a reference to a div to where the buttons will go.
+
+        // Create a button element.
+        const button = document.createElement("button");
+        // The getItem is giving me the city name for the current key for this application only.
+        button.textContent = localStorage.getItem(validKeys[i]);
+        console.log("Found " + button.textContent + " in local storage.");
+        // Add that button to the div to display it.
+        // TODO: divElement.append(button);
+    }
+}
+loadCities();
+
