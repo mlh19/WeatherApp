@@ -101,11 +101,20 @@ function getDailyDays(latitude, longitude) {
                                 addImg.alt = "Weather Icon";
                                 document.getElementById(forecastUlID).appendChild(addImg);
 
-                                // TODO: Temp
+                                //Temp
+                                var tempLabel = document.createElement('li');
+                                tempLabel.textContent = "Temp: " + maxTemp + " \xB0F";
+                                document.getElementById(forecastUlID).appendChild(tempLabel);
 
-                                // TODO: Wind
+                                //Wind
+                                var windLabel = document.createElement('li');
+                                windLabel.textContent = "Wind: " +windSpeed + " MPH";
+                                document.getElementById(forecastUlID).appendChild(windLabel);
 
-                                // TODO: Humidity
+                                //Humidity
+                                var humidityLabel = document.createElement('li');
+                                humidityLabel.textContent = "Humidity: " + humidity + "%";
+                                document.getElementById(forecastUlID).appendChild(humidityLabel);
 
                             }
                         }
