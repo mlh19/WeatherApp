@@ -58,6 +58,7 @@ function getCoords(cityName) {
 
 function getDailyDays(latitude, longitude) {
     oneCallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&exclude=${part}&appid=${myAPI}`;
+    //console.log(oneCallURL);
 
     //Fetch the API URL.
     fetch(oneCallURL)
@@ -87,34 +88,64 @@ function getDailyDays(latitude, longitude) {
 
                             if (i == 0) {
                                 // TODO: Add the first day on the top container.
-                            } else {
-                                // Add the other days as small containers.
-                                var forecastUlID = "temp" + i;
-                                console.log(forecastUlID);
+                                const forecastUlEl = document.getElementById("");
 
                                 var dateLabel = document.createElement('li');
                                 dateLabel.textContent = date;
-                                document.getElementById(forecastUlID).appendChild(dateLabel);
+                                forecastUlEl.appendChild(dateLabel);
 
                                 var addImg = document.createElement('img');
                                 addImg.src = iconURL;
                                 addImg.alt = "Weather Icon";
-                                document.getElementById(forecastUlID).appendChild(addImg);
+                                forecastUlEl.appendChild(addImg);
 
                                 //Temp
                                 var tempLabel = document.createElement('li');
                                 tempLabel.textContent = "Temp: " + maxTemp + " \xB0F";
-                                document.getElementById(forecastUlID).appendChild(tempLabel);
+                                forecastUlEl.appendChild(tempLabel);
 
                                 //Wind
                                 var windLabel = document.createElement('li');
                                 windLabel.textContent = "Wind: " +windSpeed + " MPH";
-                                document.getElementById(forecastUlID).appendChild(windLabel);
+                                forecastUlEl.appendChild(windLabel);
 
                                 //Humidity
                                 var humidityLabel = document.createElement('li');
                                 humidityLabel.textContent = "Humidity: " + humidity + "%";
-                                document.getElementById(forecastUlID).appendChild(humidityLabel);
+                                forecastUlEl.appendChild(humidityLabel);
+                               
+                               //UVI
+                                var uvi = data.daily[i].uvi;
+
+
+                            } else {
+                                // Add the other days as small containers.
+                                var forecastUlID = "temp" + i;
+                                const forecastUlEl = document.getElementById(forecastUlID);
+
+                                var dateLabel = document.createElement('li');
+                                dateLabel.textContent = date;
+                                forecastUlEl.appendChild(dateLabel);
+
+                                var addImg = document.createElement('img');
+                                addImg.src = iconURL;
+                                addImg.alt = "Weather Icon";
+                                forecastUlEl.appendChild(addImg);
+
+                                //Temp
+                                var tempLabel = document.createElement('li');
+                                tempLabel.textContent = "Temp: " + maxTemp + " \xB0F";
+                                forecastUlEl.appendChild(tempLabel);
+
+                                //Wind
+                                var windLabel = document.createElement('li');
+                                windLabel.textContent = "Wind: " +windSpeed + " MPH";
+                                forecastUlEl.appendChild(windLabel);
+
+                                //Humidity
+                                var humidityLabel = document.createElement('li');
+                                humidityLabel.textContent = "Humidity: " + humidity + "%";
+                                forecastUlEl.appendChild(humidityLabel);
 
                             }
                         }
@@ -149,12 +180,18 @@ searchButton.addEventListener("click", searchButtonClicked);
 
 // Local Storage Section
 function saveCity(cityName) {
+    // Convert the inputted cityName to capitalized case to avoid saving cities with different casing.
+    const upperCaseCity = cityName.toUpperCase();
     // Implement the saving of the cityName using local storage.
-    localStorage.setItem("WeatherApp-" + cityName, cityName);
-    console.log("Saved city: " + cityName + ".");
+    localStorage.setItem("WeatherApp-" + upperCaseCity, upperCaseCity);
+    console.log("Saved city: " + upperCaseCity + ".");
+
+    // Reload so that the new city we added gets its own button.
+    loadCitiesFromStorage();
 }
 
-function loadCities() {
+// Loads all the cities from local storage and creates a button for that city.
+function loadCitiesFromStorage() {
     // Get all the keys for local storage, and then ONLY get the ones that follow the filtering which
     // is if the key contains "WeatherApp-".
     var validKeys = Object.keys(localStorage).filter(word => word.includes("WeatherApp-") === true);
@@ -164,18 +201,49 @@ function loadCities() {
     var numOfKeys = validKeys.length;
     var amountOfButtons = Math.min(numOfKeys, 8);
 
-    // Create a new element with each initial and their score.
-    for (var i = 0; i < amountOfButtons; i++) {
-        // TODO: Get a reference to a div to where the buttons will go.
+    // Clear any existing butons before we re-add them.
+    const divEl = document.getElementById("previousSearchButtons");
+    while (divEl.firstChild) {
+        divEl.removeChild(divEl.firstChild);
+    }
 
+    // Create buttons for all of the cities it finds in local storage.
+    for (var i = 0; i < amountOfButtons; i++) {
         // Create a button element.
         const button = document.createElement("button");
         // The getItem is giving me the city name for the current key for this application only.
         button.textContent = localStorage.getItem(validKeys[i]);
         console.log("Found " + button.textContent + " in local storage.");
+        // Attach the function to that search button we just created.
+        button.addEventListener("click", previousSearchButtonClicked);
         // Add that button to the div to display it.
-        // TODO: divElement.append(button);
+        divEl.append(button);
     }
 }
-loadCities();
 
+// Remove all the cities from local storage.
+function removeCitiesFromStorage() {
+    const validKeys = Object.keys(localStorage).filter(word => word.includes("WeatherApp-") === true);
+    const numofKeys = validKeys.length;
+    for (var i = 0; i < numofKeys; i++) {
+        localStorage.removeItem(validKeys[i]);
+    }
+}
+
+function previousSearchButtonClicked() {
+    // "this" refers to the button that CALLED this function.
+    // Get the city from the button's text content.
+    console.log(this.textContent);
+    getCoords(this.textContent);
+}
+
+loadCitiesFromStorage();
+
+// Whenever the cities are loaded from local storage, because they are saved
+// into a dictionary, there is no ordering, so when creating the search buttons,
+// it is technically getting any 8 cities it finds. This can cause an issue where
+// the user might search for a city and it might not show up in the recently searched
+// results because it got 8 other cities to load from storage. A possible fix is
+// to instead save an array under 1 key. Then we append to that array. The array will
+// have ordering, and we just get the last 8 values of that array since the array is
+// working as a stack data structure.
