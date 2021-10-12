@@ -11,77 +11,79 @@
   <title>Weather Application</title>
 </head>
 
-
-
-
-
-
-
 <body>
-  <div>
-    <input type="Search" id="cityInputBox" name="cityInputBox">
-  </div>
-  <div>
-    <button id="searchButton">Search</button>
-  </div>
+  <h1>Weather Application</h1>
+  <div class="row">
+    <div>
+      <div class="d-flex flex-column" style="max-width: 350px; margin-right: 15px; min-width: 350px;">
+        <input type="Search" id="cityInputBox" name="cityInputBox">
 
-
-  <div id="previousSearchButtons"></div>
-
-
-
-  
-
-  <div class="card border-success mb-2" style="max-width: 18rem;">
-      <p class="card-text"> <div>
-        <ul id="temp1">
-        </ul>
+        <button id="searchButton">Search</button>
       </div>
-    </p>
-  </div>
-    
 
-      <div class="card border-success mb-3" style="max-width: 18rem;">
-          <p class="card-text"> <div>
-            <ul id="temp2">
-            </ul>
-          </div>
+
+
+      <div class="d-flex flex-column" id="previousSearchButtons" style="max-width: 10rem;"></div>
+    </div>
+
+
+
+    <div class="d-flex flex-wrap">
+      <div class="card border-success mb-3" style="max-width: 18rem; max-height: 185px;">
+        <p class="card-text">
+        <div>
+          <ul id="temp1">
+          </ul>
+        </div>
         </p>
       </div>
 
-      
-    
-          <div class="card border-success mb-3" style="max-width: 18rem;">
-              <p class="card-text">  <div>
-                <ul id="temp3">
-                </ul>
-              </div>
-            </p>
-          </div>
-        
-            
-    
-              <div class="card border-success mb-3" style="max-width: 18rem;">
-                  <p class="card-text"> <div>
-                    <ul id="temp4">
-                    </ul>
-                  </div>
-                </p>
-              </div>
-           
-            
+
+      <div class="card border-success mb-3" style="max-width: 18rem; max-height: 185px;">
+        <p class="card-text">
+        <div>
+          <ul id="temp2">
+          </ul>
+        </div>
+        </p>
+      </div>
 
 
-              <div class="card border-success mb-3" style="max-width: 18rem;">
-                  <p class="card-text"> <div>
-                    <ul id="temp5">
-                    </ul>
-                  </div>
-                    </p>
-                  </div>
-           
 
-              
+      <div class="card border-success mb-3" style="max-width: 18rem; max-height: 185px;">
+        <p class="card-text">
+        <div>
+          <ul id="temp3">
+          </ul>
+        </div>
+        </p>
+      </div>
+
+
+
+      <div class="card border-success mb-3" style="max-width: 18rem; max-height: 185px;">
+        <p class="card-text">
+        <div>
+          <ul id="temp4">
+          </ul>
+        </div>
+        </p>
+      </div>
+
+
+
+
+      <div class="card border-success mb-3" style="max-width: 18rem; max-height: 185px;">
+        <p class="card-text">
+        <div>
+          <ul id="temp5">
+          </ul>
+        </div>
+        </p>
+      </div>
+    </div>
+
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
         integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="

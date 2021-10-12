@@ -88,34 +88,34 @@ function getDailyDays(latitude, longitude) {
 
                             if (i == 0) {
                                 // TODO: Add the first day on the top container.
-                                const forecastUlEl = document.getElementById("");
+                                // const forecastUlEl = document.getElementById("");
 
-                                var dateLabel = document.createElement('li');
-                                dateLabel.textContent = date;
-                                forecastUlEl.appendChild(dateLabel);
+                            //     var dateLabel = document.createElement('li');
+                            //     dateLabel.textContent = date;
+                            //     forecastUlEl.appendChild(dateLabel);
 
-                                var addImg = document.createElement('img');
-                                addImg.src = iconURL;
-                                addImg.alt = "Weather Icon";
-                                forecastUlEl.appendChild(addImg);
+                            //     var addImg = document.createElement('img');
+                            //     addImg.src = iconURL;
+                            //     addImg.alt = "Weather Icon";
+                            //     forecastUlEl.appendChild(addImg);
 
-                                //Temp
-                                var tempLabel = document.createElement('li');
-                                tempLabel.textContent = "Temp: " + maxTemp + " \xB0F";
-                                forecastUlEl.appendChild(tempLabel);
+                            //     //Temp
+                            //     var tempLabel = document.createElement('li');
+                            //     tempLabel.textContent = "Temp: " + maxTemp + " \xB0F";
+                            //     forecastUlEl.appendChild(tempLabel);
 
-                                //Wind
-                                var windLabel = document.createElement('li');
-                                windLabel.textContent = "Wind: " +windSpeed + " MPH";
-                                forecastUlEl.appendChild(windLabel);
+                            //     //Wind
+                            //     var windLabel = document.createElement('li');
+                            //     windLabel.textContent = "Wind: " +windSpeed + " MPH";
+                            //     forecastUlEl.appendChild(windLabel);
 
-                                //Humidity
-                                var humidityLabel = document.createElement('li');
-                                humidityLabel.textContent = "Humidity: " + humidity + "%";
-                                forecastUlEl.appendChild(humidityLabel);
+                            //     //Humidity
+                            //     var humidityLabel = document.createElement('li');
+                            //     humidityLabel.textContent = "Humidity: " + humidity + "%";
+                            //     forecastUlEl.appendChild(humidityLabel);
                                
-                               //UVI
-                                var uvi = data.daily[i].uvi;
+                            //    //UVI
+                            //     var uvi = data.daily[i].uvi;
 
 
                             } else {
@@ -139,7 +139,7 @@ function getDailyDays(latitude, longitude) {
 
                                 //Wind
                                 var windLabel = document.createElement('li');
-                                windLabel.textContent = "Wind: " +windSpeed + " MPH";
+                                windLabel.textContent = "Wind: " + windSpeed + " MPH";
                                 forecastUlEl.appendChild(windLabel);
 
                                 //Humidity
@@ -164,6 +164,8 @@ function clearDiv(elementID) {
 
 // Search Button Section
 var searchButton = document.getElementById("searchButton");
+searchButton.setAttribute("class", "btn btn-info");
+searchButton.setAttribute("style", "margin-bottom: 5px"); 
 function searchButtonClicked() {
     // Gets the text inside the input box.
     var city = document.getElementById("cityInputBox").value;
@@ -211,6 +213,8 @@ function loadCitiesFromStorage() {
     for (var i = 0; i < amountOfButtons; i++) {
         // Create a button element.
         const button = document.createElement("button");
+        button.setAttribute("class", "btn btn-secondary");
+        button.setAttribute("style", "margin-bottom: 5px" );
         // The getItem is giving me the city name for the current key for this application only.
         button.textContent = localStorage.getItem(validKeys[i]);
         console.log("Found " + button.textContent + " in local storage.");
