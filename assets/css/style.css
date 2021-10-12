@@ -1,3 +1,14 @@
+body {
+    background-color: gainsboro;
+}
+header img {
+    height: 60vh;
+    width: 100vw;
+    margin: 0;
+    align-content: center !important;
+}
+
+
 h1 {
     text-align: center;
     padding: 50px;
@@ -16,7 +27,7 @@ ul {
     margin: 0;
 }
 
-body {
+main {
     margin: 0px 100px 0px 150px !important;
     background-color: gainsboro;
 }
