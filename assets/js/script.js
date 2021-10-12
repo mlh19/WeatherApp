@@ -5,6 +5,7 @@ var cityName;
 var oneCallURL;
 
 
+
 // Makes a network call to the Open Weather API to download the weather for the specified cityName.
 function getCoords(cityName) {
   // String Interpolation
@@ -61,6 +62,13 @@ function getDailyDays(latitude, longitude) {
             if (i == 0) {
               var forecastCurrentUlID = "temp" + i;
               const forecastCurrentUlEl = document.getElementById(forecastCurrentUlID);
+
+              var cityNameLabel = document.createElement("li");
+              console.log(cityName + " fuck you");
+              cityNameLabel.textContent = cityName;
+              console.log(cityName + " fuck you Hard");
+              forecastCurrentUlEl.appendChild(cityNameLabel);
+             
 
               var dateLabel = document.createElement("li");
               dateLabel.textContent = date;
