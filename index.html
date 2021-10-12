@@ -14,22 +14,33 @@
 <body>
   <h1>Weather Application</h1>
   <div class="row">
+    <div><h3>Search by City:</h3>
     <div>
-      <div class="d-flex flex-column" style="max-width: 350px; margin-right: 15px; min-width: 350px;">
+      <div class="d-flex flex-column" style="max-width: 350px; margin-right: 15px; min-width: 450px;">
         <input type="Search" id="cityInputBox" name="cityInputBox">
 
         <button id="searchButton">Search</button>
       </div>
-
-
-
-      <div class="d-flex flex-column" id="previousSearchButtons" style="max-width: 10rem;"></div>
     </div>
 
+      <div class="d-flex flex-column" id="previousSearchButtons" style="max-width: 450px;"></div>
+    </div>
+
+    <div>
+      <div id="weatherCard">
+        <div class="card border-success mb-3" style="max-width: 130rem; max-height: 210px;">
+          <p class="card-text">
+          <div>
+            <ul id="temp0">
+            </ul>
+          </div>
+          </p>
+        </div>
+      </div>
 
 
-    <div class="d-flex flex-wrap">
-      <div class="card border-success mb-3" style="max-width: 18rem; max-height: 185px;">
+    <div id="projected" class="d-flex flex-wrap">
+      <div class="card border-success mb-3" style="max-width: 30rem; min-height: 14.5rem;">
         <p class="card-text">
         <div>
           <ul id="temp1">
@@ -39,7 +50,7 @@
       </div>
 
 
-      <div class="card border-success mb-3" style="max-width: 18rem; max-height: 185px;">
+      <div id="projected" class="card border-success mb-3" style="max-width: 30rem; min-height: 14.5rem;">
         <p class="card-text">
         <div>
           <ul id="temp2">
@@ -50,7 +61,7 @@
 
 
 
-      <div class="card border-success mb-3" style="max-width: 18rem; max-height: 185px;">
+      <div id="projected" class="card border-success mb-3" style="max-width: 30rem; min-height: 14.5rem;">
         <p class="card-text">
         <div>
           <ul id="temp3">
@@ -60,8 +71,7 @@
       </div>
 
 
-
-      <div class="card border-success mb-3" style="max-width: 18rem; max-height: 185px;">
+      <div id="projected" class="card border-success mb-3" style="max-width: 30rem; min-height: 14.5rem;">
         <p class="card-text">
         <div>
           <ul id="temp4">
@@ -71,9 +81,7 @@
       </div>
 
 
-
-
-      <div class="card border-success mb-3" style="max-width: 18rem; max-height: 185px;">
+      <div id="projected" class="card border-success mb-3" style="max-width: 30rem; min-height: 14.5rem;">
         <p class="card-text">
         <div>
           <ul id="temp5">
@@ -84,6 +92,8 @@
     </div>
 
   </div>
+</div>
+  
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
         integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
