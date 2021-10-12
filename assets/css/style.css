@@ -1,13 +1,17 @@
 body {
     background-color: gainsboro;
-}
-header img {
-    height: 60vh;
     width: 100vw;
+}
+img {
+    height: auto;
+    width: 100%;
     margin: 0;
     align-content: center !important;
 }
 
+header {
+    width: 100%;
+}
 
 h1 {
     text-align: center;
@@ -28,19 +32,26 @@ ul {
 }
 
 main {
-    margin: 0px 100px 0px 150px !important;
+    /* margin: 0px 100px 0px 150px !important; */
     background-color: gainsboro;
 }
 
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) { ... }
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) { ... }
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) { ... }
-
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) { ... }
+@media (min-width: 576px) {
+    #weatherResults {
+        flex-direction: row !important;
+    } 
+#apiResults {
+    width: 60vw !important;
+}
+#projected {
+    flex-direction: row !important;
+    width: 60vw !important;
+}
+.myCard {
+    max-width: 200px !important;
+    width: 200px !important;
+    min-width: 200px !important;
+}
+}

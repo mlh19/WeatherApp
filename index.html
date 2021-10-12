@@ -12,16 +12,16 @@
 </head>
 
 <body>
-  <header id="banner">
+  <!-- <header id="banner"> -->
     <img src="assets/images/pexels-pixabay-209831.jpg" alt="banner">
-  </header>
+  <!-- </header> -->
   
-<main> 
+<main class= "d-flex flex-column align-items-center justify-content-center"> 
   <h1>Weather Application</h1>
-  <div class="row">
+  <div id="weatherResults" class="row d-flex flex-column align-items-center">
     <div><h3>Search by City:</h3>
     <div>
-      <div class="d-flex flex-column" style="max-width: 350px; margin-right: 15px; min-width: 450px;">
+      <div class="d-flex flex-column" >
         <input type="Search" id="cityInputBox" name="cityInputBox">
 
         <button id="searchButton">Search</button>
@@ -31,21 +31,21 @@
       <div class="d-flex flex-column" id="previousSearchButtons" style="max-width: 450px;"></div>
     </div>
 
-    <div>
-      <div id="weatherCard">
-        <div class="card border-success mb-3" style="max-width: 130rem; max-height: 210px;">
-          <p class="card-text">
+    <div id="apiResults" class= "d-flex flex-column align-items-center" style="width: 80vw;">
+      <div class="row" id="weatherCard" style="width:90%; max-width: 1000px;">
+        <div class="card border-success mb-3 col-12">
+          <div class="card-text">
           <div>
             <ul id="temp0">
             </ul>
           </div>
-          </p>
+          </div>
         </div>
       </div>
 
 
-    <div id="projected" class="d-flex flex-wrap">
-      <div class="card border-success mb-3" style="max-width: 30rem; min-height: 14.5rem;">
+    <div id="projected" class="d-flex flex-column align-items-center justify-content-center flex-wrap" style="width: 80vw;">
+      <div class="card border-success mb-3 myCard" style="min-height: 14.5rem; width:100%; min-width: 90%;">
         <p class="card-text">
         <div>
           <ul id="temp1">
@@ -55,7 +55,7 @@
       </div>
 
 
-      <div id="projected" class="card border-success mb-3" style="max-width: 30rem; min-height: 14.5rem;">
+      <div  class="card border-success mb-3 myCard" style="min-height: 14.5rem; width:100%; min-width: 90%;">
         <p class="card-text">
         <div>
           <ul id="temp2">
@@ -66,7 +66,7 @@
 
 
 
-      <div id="projected" class="card border-success mb-3" style="max-width: 30rem; min-height: 14.5rem;">
+      <div class="card border-success mb-3 myCard" style="min-height: 14.5rem; width:100%; min-width: 90%;">
         <p class="card-text">
         <div>
           <ul id="temp3">
@@ -76,7 +76,7 @@
       </div>
 
 
-      <div id="projected" class="card border-success mb-3" style="max-width: 30rem; min-height: 14.5rem;">
+      <div class="card border-success mb-3 myCard" style="min-height: 14.5rem; width:100%; min-width: 90%;">
         <p class="card-text">
         <div>
           <ul id="temp4">
@@ -86,7 +86,7 @@
       </div>
 
 
-      <div id="projected" class="card border-success mb-3" style="max-width: 30rem; min-height: 14.5rem;">
+      <div class="card border-success mb-3 myCard" style="min-height: 14.5rem; width:100%; min-width: 90%;">
         <p class="card-text">
         <div>
           <ul id="temp5">

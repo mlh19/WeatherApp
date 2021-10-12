@@ -55,7 +55,7 @@ function getDailyDays(latitude, longitude) {
             var iconName = data.daily[i].weather[0].icon;
             console.log(iconName);
             var iconURL =
-              "http://openweathermap.org/img/wn/" + iconName + ".png";
+              "http://openweathermap.org/img/wn/" + iconName + "@2x.png";
             console.log(iconURL);
 
             if (i == 0) {
@@ -69,7 +69,9 @@ function getDailyDays(latitude, longitude) {
               var addImg = document.createElement("img");
               addImg.src = iconURL;
               addImg.alt = "Weather Icon";
+              addImg.setAttribute("style", "max-width:250px")
               forecastCurrentUlEl.appendChild(addImg);
+
 
               //Temp
               var tempLabel = document.createElement("li");
@@ -104,6 +106,7 @@ function getDailyDays(latitude, longitude) {
               var addImg = document.createElement("img");
               addImg.src = iconURL;
               addImg.alt = "Weather Icon";
+              addImg.setAttribute("style", "max-width:250px")
               forecastUlEl.appendChild(addImg);
 
               //Temp
@@ -216,7 +219,7 @@ function previousSearchButtonClicked() {
   console.log(this.textContent);
   getCoords(this.textContent);
 }
-
+// removeCitiesFromStorage();
 loadCitiesFromStorage();
 
 // Whenever the cities are loaded from local storage, because they are saved
