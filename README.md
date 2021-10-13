@@ -32,3 +32,4 @@ SO THAT I can plan a trip accordingly
     - https://www.pexels.com/photo/beautiful-clouds-cloudy-dramatic-209831/
     - https://openweathermap.org/api
     - https://getbootstrap.com/
+    -

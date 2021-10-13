@@ -4,8 +4,6 @@ var part = "minutely, hourly";
 var cityName;
 var oneCallURL;
 
-
-
 // Makes a network call to the Open Weather API to download the weather for the specified cityName.
 function getCoords(cityName) {
   // String Interpolation
@@ -61,12 +59,12 @@ function getDailyDays(latitude, longitude) {
 
             if (i == 0) {
               var forecastCurrentUlID = "temp" + i;
-              const forecastCurrentUlEl = document.getElementById(forecastCurrentUlID);
+              const forecastCurrentUlEl =
+                document.getElementById(forecastCurrentUlID);
 
               var cityNameLabel = document.createElement("h2");
               cityNameLabel.textContent = cityName;
               forecastCurrentUlEl.appendChild(cityNameLabel);
-             
 
               var dateLabel = document.createElement("li");
               dateLabel.textContent = date;
@@ -75,9 +73,8 @@ function getDailyDays(latitude, longitude) {
               var addImg = document.createElement("img");
               addImg.src = iconURL;
               addImg.alt = "Weather Icon";
-              addImg.setAttribute("style", "max-width:250px")
+              addImg.setAttribute("style", "max-width:250px");
               forecastCurrentUlEl.appendChild(addImg);
-
 
               //Temp
               var tempLabel = document.createElement("li");
@@ -99,16 +96,15 @@ function getDailyDays(latitude, longitude) {
               var uviLabel = document.createElement("li");
               uviLabel.textContent = "UV Index: " + uvi;
               forecastCurrentUlEl.appendChild(uviLabel);
-
+              // Sets the diff colors for the paramaters.
               if (uvi < 3) {
                 uviLabel.setAttribute("style", "background-color: green;");
-               } else if (uvi < 6) {
+              } else if (uvi < 6) {
                 uviLabel.setAttribute("style", "background-color: yellow;");
-               } else (uvi < 11) 
+              } else if (uvi < 11) {
                 uviLabel.setAttribute("style", "background-color: red;");
-               }
-            
-               else {
+              }
+            } else {
               // Add the other days as small containers.
               var forecastUlID = "temp" + i;
               const forecastUlEl = document.getElementById(forecastUlID);
@@ -120,7 +116,7 @@ function getDailyDays(latitude, longitude) {
               var addImg = document.createElement("img");
               addImg.src = iconURL;
               addImg.alt = "Weather Icon";
-              addImg.setAttribute("style", "max-width:250px")
+              addImg.setAttribute("style", "max-width:250px");
               forecastUlEl.appendChild(addImg);
 
               //Temp
@@ -228,7 +224,7 @@ function removeCitiesFromStorage() {
 }
 
 function previousSearchButtonClicked() {
-  cityName=this.textContent
+  cityName = this.textContent;
   // "this" refers to the button that CALLED this function.
   // Get the city from the button's text content.
   console.log(this.textContent);

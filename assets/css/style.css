@@ -2,8 +2,8 @@ body {
     background-color: gainsboro;
     width: 100vw;
 }
-img {
-    height: 55vh;
+#banner img {
+    height: 50vh;
     width: 100%;
     margin: 0;
     align-content: center !important;
