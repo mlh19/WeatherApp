@@ -100,7 +100,15 @@ function getDailyDays(latitude, longitude) {
               uviLabel.textContent = "UV Index: " + uvi;
               forecastCurrentUlEl.appendChild(uviLabel);
 
-            } else {
+              if (uvi < 3) {
+                uviLabel.setAttribute("style", "background-color: green;");
+               } else if (uvi < 6) {
+                uviLabel.setAttribute("style", "background-color: yellow;");
+               } else (uvi < 11) 
+                uviLabel.setAttribute("style", "background-color: red;");
+               }
+            
+               else {
               // Add the other days as small containers.
               var forecastUlID = "temp" + i;
               const forecastUlEl = document.getElementById(forecastUlID);
