@@ -19,7 +19,7 @@ SO THAT I can plan a trip accordingly
 
 # Screenshot
 
-![Screenshot](./assets/images/screencapture.png)
+![Screenshot](./assets/images/screenshot.png)
 
 # Deployed Site 
 
@@ -32,4 +32,3 @@ SO THAT I can plan a trip accordingly
     - https://www.pexels.com/photo/beautiful-clouds-cloudy-dramatic-209831/
     - https://openweathermap.org/api
     - https://getbootstrap.com/
-    -
