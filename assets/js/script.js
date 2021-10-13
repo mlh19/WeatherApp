@@ -63,10 +63,8 @@ function getDailyDays(latitude, longitude) {
               var forecastCurrentUlID = "temp" + i;
               const forecastCurrentUlEl = document.getElementById(forecastCurrentUlID);
 
-              var cityNameLabel = document.createElement("li");
-              console.log(cityName + " fuck you");
+              var cityNameLabel = document.createElement("h2");
               cityNameLabel.textContent = cityName;
-              console.log(cityName + " fuck you Hard");
               forecastCurrentUlEl.appendChild(cityNameLabel);
              
 
@@ -222,6 +220,7 @@ function removeCitiesFromStorage() {
 }
 
 function previousSearchButtonClicked() {
+  cityName=this.textContent
   // "this" refers to the button that CALLED this function.
   // Get the city from the button's text content.
   console.log(this.textContent);
